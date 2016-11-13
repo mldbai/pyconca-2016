@@ -1,0 +1,71 @@
+<html>
+
+<head>
+    <title>Pycon Car Image Classifier</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <script>
+    $( document ).ready(function() {
+
+    $('#scoreImg').click(function() {
+        $.ajax({
+                method: "GET",
+                url: window.location.href.split("/").slice(0, 3).join("/") + "/v1/functions/brand_predictor/application",
+                data: {input: JSON.stringify({url: $('#url').val()})},
+                dataType: "json",
+                error: function(msg) {
+                    alert( "An exception occured :(\n" +
+                        JSON.stringify(JSON.parse(msg.responseText), null, 2));
+                },
+                success: function(e) {
+                    maxScore = -999999;
+                    maxBrand = "NA";
+                    
+                    for(var i=0; i<3; i++) {
+                        line = e["output"]["scores"][i];
+                        if(line[1][0] > maxScore) {
+                            maxScore = line[1][0];
+                            maxBrand = line[0];
+                        }
+                    }
+                    
+                    $('#displayZone').html("<h2>Your new car is a "+maxBrand+"</h2><img src='"+$('#url').val()+"'>");
+                },
+            });
+        
+    });
+        
+    $('#scoreImgPy').click(function() {
+        $.ajax({
+                method: "GET",
+                url: window.location.href.split("/").slice(0, -2).join("/") + "/py_predict",
+                data: {url: $('#url').val()},
+                dataType: "json",
+                error: function(msg) {
+                    alert( "An exception occured :(\n" +
+                        JSON.stringify(JSON.parse(msg.responseText), null, 2));
+                },
+                success: function(e) {
+                    $('#displayZone').html("<h2>Your new car is a "+e+"</h2><img src='"+$('#url').val()+"'>");
+                },
+            });
+        
+    });
+        
+        
+    });
+        
+    </script>
+</head>
+    
+<body>
+    <h1>Pycon Car Image Classifier</h1>
+    <img src="logo.jpg" width=200>
+    <hr>
+
+    <input type="text" id="url" size=30>
+    <button id="scoreImg">Score</button>
+    <button id="scoreImgPy">Score using PyRoute</button>
+    <div id="displayZone"></div>
+</body>
+</html>
