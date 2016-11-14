@@ -23,7 +23,7 @@ mldb = Connection()
 mldb.put("/v1/plugins/pycon", {
     "type": "python",
     "params": {
-        "address": "git://github.com/mldbai/pycon-2016"
+        "address": "git://github.com/mldbai/pyconca-2016.git"
     }
 })
 ```
