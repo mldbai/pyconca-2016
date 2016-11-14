@@ -11,7 +11,7 @@ November 13, 15h10
 
 ## About
 
-This repo contains the built webapp. Slides will be posted here after the tutorial.
+This repo contains the built webapp. The slides are available in the `talk` folder of the repository. Check back for a screen cast of the talk to be posted within 2 weeks.
 
 
 ### Installing the plugin
