@@ -11,7 +11,9 @@ November 13, 15h10
 
 ## About
 
-This repo contains the built webapp. The slides are available in the `talk` folder of the repository. Check back for a screen cast of the talk to be posted within 2 weeks.
+This repo contains the built web app. The slides are available in the `talk` folder of the repository. Check back for a screen cast of the talk to be posted within 2 weeks.
+
+For those who attended the talk, the glitch that caused the built plugin to fail to load is now fixed. The code below will work properly.
 
 
 ### Installing the plugin
