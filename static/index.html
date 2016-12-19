@@ -7,10 +7,13 @@
     <script>
     $( document ).ready(function() {
 
+    var urlExplode = window.location.href.split("/");
+    var mldbPrefix = urlExplode.slice(0, urlExplode.indexOf("v1")+1).join("/");
+
     $('#scoreImg').click(function() {
         $.ajax({
                 method: "GET",
-                url: window.location.href.split("/").slice(0, 3).join("/") + "/v1/functions/brand_predictor/application",
+                url: mldbPrefix + "/functions/brand_predictor/application",
                 data: {input: JSON.stringify({url: $('#url').val()})},
                 dataType: "json",
                 error: function(msg) {
@@ -20,7 +23,7 @@
                 success: function(e) {
                     maxScore = -999999;
                     maxBrand = "NA";
-                    
+
                     for(var i=0; i<3; i++) {
                         line = e["output"]["scores"][i];
                         if(line[1][0] > maxScore) {
@@ -28,13 +31,13 @@
                             maxBrand = line[0];
                         }
                     }
-                    
+
                     $('#displayZone').html("<h2>Your new car is a "+maxBrand+"</h2><img src='"+$('#url').val()+"'>");
                 },
             });
-        
+
     });
-        
+
     $('#scoreImgPy').click(function() {
         $.ajax({
                 method: "GET",
@@ -49,15 +52,15 @@
                     $('#displayZone').html("<h2>Your new car is a "+e+"</h2><img src='"+$('#url').val()+"'>");
                 },
             });
-        
+
     });
-        
-        
+
+
     });
-        
+
     </script>
 </head>
-    
+
 <body>
     <h1>Pycon Car Image Classifier</h1>
     <img src="logo.jpg" width=200>
