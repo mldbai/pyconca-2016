@@ -17,7 +17,8 @@ For those who attended the talk, the glitch that caused the built plugin to fail
 
 ## Slides & screen cast
 
-The slides are available in the `talk` folder of the repository. Check back for a screen cast of the talk to be posted within 2 weeks.
+- The slides are available in the `talk` folder of the repository. 
+- The screencast of the talk is [available on Youtube](https://www.youtube.com/watch?v=CN5Vd_7iyYk).
 
 
 ### Installing the plugin
